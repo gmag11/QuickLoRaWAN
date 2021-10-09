@@ -249,7 +249,7 @@ void LoRaWAN::on_event (void* pUserData, ev_t e) {
     }
 }
 
-void init_func (osjob_t* j) {
+void LoRaWAN::init_func (osjob_t* j) {
     // Reset the MAC state. Session and pending data transfers will be discarded.
     LMIC_reset ();
     lorawan.set_session_data ();

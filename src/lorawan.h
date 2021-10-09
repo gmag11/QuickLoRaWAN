@@ -56,7 +56,6 @@ public:
     void set_file_system (FS* fs) {
         file_system = fs;
     }
-    void set_session_data ();
     bool isJoined () {
         return joined;
     }
@@ -98,7 +97,9 @@ private:
     on_joined_cb_t on_joined_cb = 0;
     on_tx_complete_cb_t on_tx_complete_cb = 0;
     on_rx_data_cb_t on_rx_data_cb = 0;
+    static void init_func (osjob_t* j);
     bool get_session_data ();
+    void set_session_data ();
     bool save_session_data ();
     bool save_counters ();
     void calculate_duty_cycle ();
