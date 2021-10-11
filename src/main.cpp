@@ -166,15 +166,12 @@ constexpr auto PERIOD = 30000;
 
 void loop () {
     static time_t last_sent = 0;
-    static uint8_t data = 0;
     // static bool sent = false;
     // static bool adr = false;
 
     if (millis () - last_sent > PERIOD && /*!sent &&*/ lorawan.isJoined()) {
         last_sent = millis ();
-        lorawan.send_data_inmediate ((uint8_t*)&data, sizeof(uint8_t), 1);
-        data++;
-        //LMIC_sendAlive ();
+        lorawan.send_data_inmediate ((uint8_t*)mydata, sizeof (uint8_t), 1);
         Serial.println ("Send");
         Serial.printf ("Power: %d\n", lorawan.get_power ());
         Serial.printf ("SF: %s\n", lorawan.getSFStr ().c_str ());
