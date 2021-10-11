@@ -1,4 +1,5 @@
 #include <Arduino.h>
+#include <SPI.h>
 #include "lorawan.h"
 
 #ifndef DEBUG_PORT
@@ -57,6 +58,12 @@ void LoRaWAN::set_SPI_pins (int sck, int miso, int mosi, int cs) {
     spi_pins.miso = miso;
     spi_pins.mosi = mosi;
     spi_pins.cs = cs;
+
+#if defined ESP8266
+    SPI.pins (spi_pins.sck, spi_pins.miso, spi_pins.mosi, spi_pins.cs);
+#elif defined ESP32
+    SPI.begin (spi_pins.sck, spi_pins.miso, spi_pins.mosi, spi_pins.cs);
+#endif
 }
 
 #if defined DEBUG_PORT && DEBUG_LORAWAN_LIB
