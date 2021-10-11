@@ -162,28 +162,18 @@ constexpr auto PERIOD = 30000;
 
 void loop () {
     static time_t last_sent = 0;
-    //static bool sent = false;
+    static uint8_t data = 0;
+    // static bool sent = false;
     // static bool adr = false;
 
-    // if (!sent && millis () > 20000) {
-    //     sent = true;
-    //     lorawan.set_power (0);
-    //     //lorawan.set_sf (EU868_DR_SF9);
-    //     Serial.printf ("Power set to %d\n", lorawan.get_power ());
-    // }
     if (millis () - last_sent > PERIOD && /*!sent &&*/ lorawan.isJoined()) {
         last_sent = millis ();
-        lorawan.send_data_inmediate ((uint8_t*)mydata, sizeof (mydata) - 1, 1,true);
+        lorawan.send_data_inmediate ((uint8_t*)&data, sizeof(uint8_t), 1);
+        data++;
+        //LMIC_sendAlive ();
         Serial.println ("Send");
         Serial.printf ("Power: %d\n", lorawan.get_power ());
         Serial.printf ("SF: %s\n", lorawan.getSFStr ().c_str ());
-        // if (!adr && millis () > 120000) {
-        //     adr = true;
-        //     lorawan.set_adr (true);
-        //     Serial.printf ("ADR set to true\n");
-        //     LMIC_reset ();
-        //     LMIC_startJoining ();
-        // }
     }
     lorawan.loop ();
 }
