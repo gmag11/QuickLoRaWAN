@@ -47,9 +47,6 @@ const char* IRAM_ATTR extractFileName (const char* path) {
 
 LoRaWAN lorawan;
 
-
-
-
 auto constexpr CONFIG_FILE = "loraconfig.cfg";
 auto constexpr COUNTERS_FILE = "loracounters.cfg";
 
