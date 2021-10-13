@@ -57,7 +57,7 @@
 #endif
 
 #if __has_include("keys.h")
-#include "keys.h"
+#include "keys.h" // You can create a fille named keys.h with key difinitions for further privacy
 #else
 // This EUI must be in little-endian format, so least-significant-byte
 // first. When copying an EUI from ttnctl output, this means to reverse
@@ -75,7 +75,6 @@ static const u1_t PROGMEM APPKEY[16] = { FILLMEIN };
 void os_getArtEui (u1_t* buf) { memcpy_P (buf, APPEUI, 8); }
 void os_getDevEui (u1_t* buf) { memcpy_P (buf, DEVEUI, 8); }
 void os_getDevKey (u1_t* buf) { memcpy_P (buf, APPKEY, 16); }
-
 
 static uint8_t mydata[] = "Hello world!!!";
 

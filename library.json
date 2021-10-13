@@ -5,7 +5,7 @@
   "keywords": "LoRa, LoRaWAN, rfm95, TTN",
   "platforms": ["espressif32", "espressif8266"],
   "description": "LMIC wrapper library to create LoRaWAN OTAA nodes with a few lines of code, Library is designed to store connection context persistently on file system to avoid rejoin after boot cycles.",
-  "url": "https://github.com/gmag11/EasyLoRaWAN",
+  "url": "https://github.com/gmag11/QuickLoRaWAN",
   "authors":
     {
       "name": "Germán Martín",
@@ -14,7 +14,7 @@
   "repository":
     {
       "type": "git",
-      "url": "https://github.com/gmag11/EasyLoRaWAN.git"
+      "url": "https://github.com/gmag11/QuickLoRaWAN.git"
     },
   "examples": "examples/*/*.ino"
 }
